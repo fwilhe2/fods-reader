@@ -16,19 +16,18 @@
 
 package com.github.morinb.fods.reader.content;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.experimental.FieldDefaults;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@AllArgsConstructor
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class Spreadsheet {
-    CalculationSettings calculationSettings;
-    List<Table> tableList;
+    private final CalculationSettings calculationSettings;
+    private final List<Table> tableList;
+
+    public Spreadsheet(CalculationSettings calculationSettings, List<Table> tableList) {
+        this.calculationSettings = calculationSettings;
+        this.tableList = tableList;
+    }
 
     public List<String> getTableNames() {
         return tableList.stream().map(Table::getName).collect(Collectors.toList());

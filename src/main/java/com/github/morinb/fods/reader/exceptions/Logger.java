@@ -16,7 +16,6 @@
 
 package com.github.morinb.fods.reader.exceptions;
 
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 
 import java.util.function.Function;
@@ -24,10 +23,10 @@ import java.util.function.Function;
 /**
  *
  */
-@Slf4j
 public final class Logger {
 
     public static final int CLASS_INDEX = 3;
+    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(Logger.class);
 
     public void error(Function<Void, String> message, Object... arguments) {
         if (LOGGER.isErrorEnabled()) {

@@ -18,16 +18,13 @@ package com.github.morinb.fods.reader.content.cell;
 
 import com.github.morinb.fods.reader.content.CellType;
 import com.github.morinb.fods.reader.content.ValueType;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.experimental.FieldDefaults;
 
-@Getter
-@AllArgsConstructor
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class TextCell implements Cell {
-    String text;
+    private final String text;
+
+    public TextCell(String text) {
+        this.text = text;
+    }
 
 
     @Override
@@ -40,4 +37,7 @@ public class TextCell implements Cell {
         return ValueType.STRING;
     }
 
+    public String getText() {
+        return this.text;
+    }
 }

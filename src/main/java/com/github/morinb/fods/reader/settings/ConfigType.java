@@ -17,14 +17,7 @@
 package com.github.morinb.fods.reader.settings;
 
 import com.github.morinb.fods.reader.exceptions.InvalidConfigTypeValueException;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.experimental.FieldDefaults;
 
-@Getter
-@AllArgsConstructor
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public enum ConfigType {
     INT("int"),
     SHORT("short"),
@@ -33,7 +26,11 @@ public enum ConfigType {
     BASE64_BINARY("base64binary"),
     ;
 
-    String label;
+    private final String label;
+
+    private ConfigType(String label) {
+        this.label = label;
+    }
 
     public ConfigType fromValue(String value) {
         for (ConfigType configType : values()) {
@@ -42,5 +39,9 @@ public enum ConfigType {
             }
         }
         throw new InvalidConfigTypeValueException(value);
+    }
+
+    public String getLabel() {
+        return this.label;
     }
 }

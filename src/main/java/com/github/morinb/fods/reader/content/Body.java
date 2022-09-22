@@ -16,14 +16,14 @@
 
 package com.github.morinb.fods.reader.content;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.experimental.FieldDefaults;
-
-@Getter
-@AllArgsConstructor
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class Body {
-    private Spreadsheet spreadsheet;
+    private final Spreadsheet spreadsheet;
+
+    public Body(Spreadsheet spreadsheet) {
+        this.spreadsheet = spreadsheet;
+    }
+
+    public Spreadsheet getSpreadsheet() {
+        return this.spreadsheet;
+    }
 }

@@ -27,9 +27,6 @@ import com.github.morinb.fods.reader.exceptions.TooManySpreadsheetItemException;
 import com.github.morinb.fods.reader.exceptions.TooManyTextItemException;
 import com.github.morinb.fods.reader.meta.Metadata;
 import com.github.morinb.fods.reader.settings.Settings;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.experimental.FieldDefaults;
 import org.slf4j.MDC;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -52,8 +49,6 @@ import java.util.UUID;
 /**
  * FODS Spreadsheet
  */
-@Getter
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class OfficeDocument {
     private static final Logger LOGGER = new Logger();
     public static final String TABLE_NUMBER_COLUMNS_REPEATED = "table:number-columns-repeated";
@@ -269,4 +264,15 @@ public class OfficeDocument {
     }
 
 
+    public Metadata getMetadata() {
+        return this.metadata;
+    }
+
+    public Settings getSettings() {
+        return this.settings;
+    }
+
+    public Body getBody() {
+        return this.body;
+    }
 }

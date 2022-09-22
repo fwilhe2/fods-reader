@@ -16,16 +16,26 @@
 
 package com.github.morinb.fods.reader.content;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.experimental.FieldDefaults;
-
-@Getter
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@AllArgsConstructor
 public class CalculationSettings {
-    boolean automaticFindLabels;
-    boolean useRegularExpressions;
-    boolean useWildcards;
+    private final boolean automaticFindLabels;
+    private final boolean useRegularExpressions;
+    private final boolean useWildcards;
+
+    public CalculationSettings(boolean automaticFindLabels, boolean useRegularExpressions, boolean useWildcards) {
+        this.automaticFindLabels = automaticFindLabels;
+        this.useRegularExpressions = useRegularExpressions;
+        this.useWildcards = useWildcards;
+    }
+
+    public boolean isAutomaticFindLabels() {
+        return this.automaticFindLabels;
+    }
+
+    public boolean isUseRegularExpressions() {
+        return this.useRegularExpressions;
+    }
+
+    public boolean isUseWildcards() {
+        return this.useWildcards;
+    }
 }

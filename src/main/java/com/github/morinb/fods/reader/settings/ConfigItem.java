@@ -16,18 +16,60 @@
 
 package com.github.morinb.fods.reader.settings;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.experimental.FieldDefaults;
 
-@Getter
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@EqualsAndHashCode
 public class ConfigItem {
-    String name;
-    ConfigType type;
-    Object value;
+    private final String name;
+    private final ConfigType type;
+    private final Object value;
+
+    public ConfigItem(String name, ConfigType type, Object value) {
+        this.name = name;
+        this.type = type;
+        this.value = value;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public ConfigType getType() {
+        return this.type;
+    }
+
+    public Object getValue() {
+        return this.value;
+    }
+
+    public boolean equals(final Object o) {
+        if (o == this) return true;
+        if (!(o instanceof ConfigItem)) return false;
+        final ConfigItem other = (ConfigItem) o;
+        if (!other.canEqual((Object) this)) return false;
+        final Object this$name = this.getName();
+        final Object other$name = other.getName();
+        if (this$name == null ? other$name != null : !this$name.equals(other$name)) return false;
+        final Object this$type = this.getType();
+        final Object other$type = other.getType();
+        if (this$type == null ? other$type != null : !this$type.equals(other$type)) return false;
+        final Object this$value = this.getValue();
+        final Object other$value = other.getValue();
+        if (this$value == null ? other$value != null : !this$value.equals(other$value)) return false;
+        return true;
+    }
+
+    protected boolean canEqual(final Object other) {
+        return other instanceof ConfigItem;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        final Object $name = this.getName();
+        result = result * PRIME + ($name == null ? 43 : $name.hashCode());
+        final Object $type = this.getType();
+        result = result * PRIME + ($type == null ? 43 : $type.hashCode());
+        final Object $value = this.getValue();
+        result = result * PRIME + ($value == null ? 43 : $value.hashCode());
+        return result;
+    }
 }

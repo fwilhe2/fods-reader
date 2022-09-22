@@ -18,18 +18,16 @@ package com.github.morinb.fods.reader.content.cell;
 
 import com.github.morinb.fods.reader.content.CellType;
 import com.github.morinb.fods.reader.content.ValueType;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.experimental.FieldDefaults;
-
-@Getter
-@AllArgsConstructor
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class FormulaCell implements Cell {
-    String text;
-    String formula;
-    ValueType valueType;
+    private final String text;
+    private final String formula;
+    private final ValueType valueType;
+
+    public FormulaCell(String text, String formula, ValueType valueType) {
+        this.text = text;
+        this.formula = formula;
+        this.valueType = valueType;
+    }
 
     @Override
     public CellType getCellType() {
@@ -37,4 +35,15 @@ public class FormulaCell implements Cell {
     }
 
 
+    public String getText() {
+        return this.text;
+    }
+
+    public String getFormula() {
+        return this.formula;
+    }
+
+    public ValueType getValueType() {
+        return this.valueType;
+    }
 }
